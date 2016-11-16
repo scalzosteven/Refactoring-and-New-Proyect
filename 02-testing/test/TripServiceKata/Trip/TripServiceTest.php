@@ -4,6 +4,7 @@ namespace Test\TripServiceKata\Trip;
 
 use PHPUnit_Framework_TestCase;
 use TripServiceKata\Exception\UserNotLoggedInException;
+use TripServiceKata\Trip\Trip;
 use TripServiceKata\Trip\TripService;
 use TripServiceKata\User\User;
 
@@ -46,6 +47,23 @@ class TripServiceTest extends PHPUnit_Framework_TestCase
         // then
         $this->assertEquals([], $tripList);
     }
+
+    /** @test */
+    public function
+    if_user_logged_is_friend_of_trip_user_then_obtains_a_trip()
+    {
+        // given
+        $user = new User('Friendship Person');
+        $this->tripService->loggedUserWrapper = $user;
+        $friend = new User('Other User Friend of me');
+        $friend->addFriend($user);
+
+        // when
+        $tripList = $this->tripService->getTripsByUser($friend);
+
+        // then
+        $this->assertNotEmpty($tripList);
+    }
 }
 
 class TripServiceWrapper extends TripService
@@ -55,5 +73,10 @@ class TripServiceWrapper extends TripService
     protected function obtainLoggedUser()
     {
         return $this->loggedUserWrapper;
+    }
+
+    protected function obtainTripsByUser(User $user)
+    {
+        return array(1, 2, 3);
     }
 }
