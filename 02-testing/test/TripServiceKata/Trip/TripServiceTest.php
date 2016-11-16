@@ -23,18 +23,23 @@ class TripServiceTest extends PHPUnit_Framework_TestCase
     public function
     given_a_not_logged_user_retrieve_exception()
     {
-        try {
-            $this->tripService->getTripsByUser(new User(null));
-        } catch (UserNotLoggedInException $exception) {
-            $this->assertTrue(true);
-        }
+        // given
+        $this->tripService->loggedUserWrapper = null;
+
+        // then
+        $this->setExpectedException(UserNotLoggedInException::class);
+
+        // when
+        $this->tripService->getTripsByUser(new User(null));
     }
 }
 
 class TripServiceWrapper extends TripService
 {
+    public $loggedUserWrapper;
+
     protected function obtainLoggedUser()
     {
-        return null;
+        return $this->loggedUserWrapper;
     }
 }
