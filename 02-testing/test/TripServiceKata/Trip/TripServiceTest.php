@@ -32,6 +32,20 @@ class TripServiceTest extends PHPUnit_Framework_TestCase
         // when
         $this->tripService->getTripsByUser(new User(null));
     }
+
+    /** @test */
+    public function
+    if_users_are_not_friends_then_obtain_empty_list()
+    {
+        // given
+        $this->tripService->loggedUserWrapper = new User('Forever Alone');
+
+        // when
+        $tripList = $this->tripService->getTripsByUser(new User('Other User Not Friend Of me'));
+
+        // then
+        $this->assertEquals([], $tripList);
+    }
 }
 
 class TripServiceWrapper extends TripService
