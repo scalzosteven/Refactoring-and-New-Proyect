@@ -20,9 +20,7 @@ class TripServiceTest extends PHPUnit_Framework_TestCase
     given_a_not_logged_user_retrieve_exception()
     {
         // given
-        $this->tripService = new TripServiceWrapper;
-
-        $this->tripService->loggedUserWrapper = null;
+        $this->tripService = new TripServiceWrapper(null);
 
         // then
         $this->setExpectedException(UserNotLoggedInException::class);
@@ -36,9 +34,7 @@ class TripServiceTest extends PHPUnit_Framework_TestCase
     if_users_are_not_friends_then_obtain_empty_list()
     {
         // given
-        $this->tripService = new TripServiceWrapper;
-
-        $this->tripService->loggedUserWrapper = new User('Forever Alone');
+        $this->tripService = new TripServiceWrapper(new User('Forever Alone'));
 
         // when
         $tripList = $this->tripService->getTripsByUser(new User('Other User Not Friend Of me'));
@@ -52,10 +48,9 @@ class TripServiceTest extends PHPUnit_Framework_TestCase
     if_user_logged_is_friend_of_trip_user_then_obtains_a_trip()
     {
         // given
-        $this->tripService = new TripServiceWrapper;
-
         $user = new User('Friendship Person');
-        $this->tripService->loggedUserWrapper = $user;
+        $this->tripService = new TripServiceWrapper($user);
+
         $friend = new User('Other User Friend of me');
         $friend->addFriend($user);
 
@@ -70,11 +65,6 @@ class TripServiceTest extends PHPUnit_Framework_TestCase
 class TripServiceWrapper extends TripService
 {
     public $loggedUserWrapper;
-
-    protected function obtainLoggedUser()
-    {
-        return $this->loggedUserWrapper;
-    }
 
     protected function obtainTripsByUser(User $user)
     {

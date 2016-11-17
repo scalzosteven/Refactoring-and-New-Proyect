@@ -8,6 +8,13 @@ use TripServiceKata\User\UserSession;
 
 class TripService
 {
+    private $loggedUser;
+
+    public function __construct($loggedUser)
+    {
+        $this->loggedUser = $loggedUser;
+    }
+
     public function getTripsByUser(User $user)
     {
         $tripList = array();
@@ -33,7 +40,7 @@ class TripService
 
     protected function obtainLoggedUser()
     {
-        return UserSession::getInstance()->getLoggedUser();
+        return $this->loggedUser;
     }
 
     /**
