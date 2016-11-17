@@ -4,29 +4,50 @@ namespace Test\TripServiceKata\Trip;
 
 use PHPUnit_Framework_TestCase;
 use TripServiceKata\Exception\UserNotLoggedInException;
-use TripServiceKata\Trip\Trip;
 use TripServiceKata\Trip\TripService;
 use TripServiceKata\User\User;
 
+
 class TripServiceTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * @var TripServiceWrapper
-     */
-    private $tripService;
+    /** @var  User */
+    private $user;
+
+    /** @var  User */
+    private $userLogged;
+
+    /** @var  User */
+    private $withoutFriends;
+
+    /** @var  User */
+    private $friendshipUser;
+
+    /** @var User */
+    private $friend;
+
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->user = new User('Not Friend of Me');
+        $this->userLogged = new User('User Logged');
+        $this->withoutFriends = new User('Forever Alone');
+        $this->friendshipUser = new User('Friendship User');
+        $this->friend = new User('Other User Friend of me');
+        $this->friend->addFriend($this->friendshipUser);
+    }
 
     /** @test */
     public function
     given_a_not_logged_user_retrieve_exception()
     {
         // given
-        $this->tripService = new TripServiceWrapper(null);
+        $tripService = new TripServiceWrapper(null);
 
         // then
         $this->setExpectedException(UserNotLoggedInException::class);
 
         // when
-        $this->tripService->getTripsByUser(new User(null));
+        $tripService->getTripsByUser(new User(null));
     }
 
     /** @test */
@@ -34,10 +55,10 @@ class TripServiceTest extends PHPUnit_Framework_TestCase
     if_users_are_not_friends_then_obtain_empty_list()
     {
         // given
-        $this->tripService = new TripServiceWrapper(new User('Forever Alone'));
+        $tripService = new TripServiceWrapper($this->withoutFriends);
 
         // when
-        $tripList = $this->tripService->getTripsByUser(new User('Other User Not Friend Of me'));
+        $tripList = $tripService->getTripsByUser($this->user);
 
         // then
         $this->assertEquals([], $tripList);
@@ -48,14 +69,10 @@ class TripServiceTest extends PHPUnit_Framework_TestCase
     if_user_logged_is_friend_of_trip_user_then_obtains_a_trip()
     {
         // given
-        $user = new User('Friendship Person');
-        $this->tripService = new TripServiceWrapper($user);
-
-        $friend = new User('Other User Friend of me');
-        $friend->addFriend($user);
+        $tripService = new TripServiceWrapper($this->friendshipUser);
 
         // when
-        $tripList = $this->tripService->getTripsByUser($friend);
+        $tripList = $tripService->getTripsByUser($this->friend);
 
         // then
         $this->assertNotEmpty($tripList);
