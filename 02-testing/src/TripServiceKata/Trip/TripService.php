@@ -2,28 +2,37 @@
 
 namespace TripServiceKata\Trip;
 
+use TripServiceKata\Exception\UserNotLoggedInException;
 use TripServiceKata\User\User;
 use TripServiceKata\User\UserSession;
-use TripServiceKata\Exception\UserNotLoggedInException;
 
 class TripService
 {
-    public function getTripsByUser(User $user) {
+    public function getTripsByUser(User $user)
+    {
         $tripList = array();
         $loggedUser = $this->obtainLoggedUser();
         $isFriend = false;
-        if ($loggedUser != null) {
-            foreach ($user->getFriends() as $friend) {
-                if ($friend == $loggedUser) {
-                    $isFriend = true;
-                    break;
-                }
+
+        $this->checkIfUserLogged($loggedUser);
+
+        foreach ($user->getFriends() as $friend) {
+            if ($friend == $loggedUser) {
+                $isFriend = true;
+                break;
             }
-            if ($isFriend) {
-                $tripList = $this->obtainTripsByUser($user);
-            }
-            return $tripList;
-        } else {
+        }
+
+        if ($isFriend) {
+            $tripList = $this->obtainTripsByUser($user);
+        }
+
+        return $tripList;
+    }
+
+    private function checkIfUserLogged($loggedUser)
+    {
+        if ($loggedUser == null) {
             throw new UserNotLoggedInException();
         }
     }
