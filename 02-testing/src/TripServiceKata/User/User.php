@@ -36,4 +36,22 @@ class User
     {
         $this->trips[] = $trip;
     }
+
+    /**
+     * @param $loggedUser
+     * @return bool
+     */
+    public function areFriend($loggedUser)
+    {
+        $isFriend = false;
+
+        foreach ($this->getFriends() as $friend) {
+            if ($friend == $loggedUser) {
+                $isFriend = true;
+                break;
+            }
+        }
+
+        return $isFriend;
+    }
 }
