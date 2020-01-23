@@ -1,4 +1,7 @@
 <?php
+namespace Refactoring;
+
+
 
 class Movie {
     const CHILDRENS = 2;

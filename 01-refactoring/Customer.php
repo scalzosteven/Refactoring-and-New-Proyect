@@ -1,5 +1,5 @@
 <?php
-
+namespace Refactoring;
 class Customer {
     private  $_name;
     private $_rentals = array();
