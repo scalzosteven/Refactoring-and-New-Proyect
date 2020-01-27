@@ -1,4 +1,5 @@
 <?php
+
 namespace Refactoring;
 
 class Movie
