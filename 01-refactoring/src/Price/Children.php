@@ -6,7 +6,7 @@ namespace Refactoring\Price;
 
 use Refactoring\Movie;
 
-class Children implements Price
+class Children extends Price
 {
     public function getPriceCode()
     {
