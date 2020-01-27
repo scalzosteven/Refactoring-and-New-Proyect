@@ -32,7 +32,7 @@ class Customer
 
         foreach ($rentals as $rental) {
 
-            $thisAmount = $this->calculateAmountFot($rental);
+            $thisAmount = $this->obtainChange($rental);
             $totalAmount += $thisAmount;
 
             // add frequent renter points
@@ -57,7 +57,7 @@ class Customer
         return $result;
     }
 
-    public function calculateAmountFot($each)
+    public function obtainChange($each)
     {
         $thisAmount = 0;
         switch ($each->getMovie()->getPriceCode()) {
