@@ -28,9 +28,9 @@ class Rental
         return $this->getMovie()->obtainChange($this->getDaysRented());
     }
 
-    public function calculateFrequentRenterPoints()
+    public function obtainFrequentRenterPoints()
     {
-        return $this->getMovie()->calculateFrequentRenterPoints($this->_daysRented);
+        return $this->getMovie()->obtainFrequentRenterPoints($this->_daysRented);
     }
 
 }

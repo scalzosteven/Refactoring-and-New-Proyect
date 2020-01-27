@@ -45,7 +45,7 @@ class Customer
         $frequentRenterPoints = 0;
         foreach ($rentals as $rental) {
             $frequentRenterPoints = $frequentRenterPoints +
-                $rental->calculateFrequentRenterPoints();
+                $rental->obtainFrequentRenterPoints();
         }
         return$frequentRenterPoints;
     }
