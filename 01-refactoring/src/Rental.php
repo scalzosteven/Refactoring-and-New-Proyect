@@ -42,7 +42,6 @@ class Rental
                     $thisAmount += ($this->getDaysRented() - 3) * 1.5;
                 }
                 break;
-
         }
         return $thisAmount;
     }
