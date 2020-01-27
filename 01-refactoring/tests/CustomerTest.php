@@ -6,12 +6,12 @@
 
 namespace Refactoring;
 
-
 class CustomerTest extends \PHPUnit_Framework_TestCase
 {
     public $customer;
 
-    public function setUp(){
+    public function setUp()
+    {
         $this->customer = new Customer("Joe");
     }
 
@@ -94,6 +94,4 @@ class CustomerTest extends \PHPUnit_Framework_TestCase
     {
         $this->customer->addRental(new Rental(new Movie($title, $priceCode), $days));
     }
-
-
 }
