@@ -30,17 +30,7 @@ class Rental
 
     public function calculateFrequentRenterPoints()
     {
-        return 1 + $this->addBonusForNewRelease();
+        return $this->getMovie()->calculateFrequentRenterPoints($this->_daysRented);
     }
 
-    private function addBonusForNewRelease()
-    {
-        $frequentRenterPoints = 0;
-        if (($this->getMovie()->getPriceCode() == Movie::NEW_RELEASE)
-            &&
-            $this->getDaysRented() > 1) {
-            $frequentRenterPoints = $frequentRenterPoints + 1;
-        }
-        return $frequentRenterPoints;
-    }
 }
