@@ -31,7 +31,7 @@ class Customer
         $result = "Rental Record for " . $this->getName() . "\n";
 
         foreach ($rentals as $rental) {
-            $thisAmount = $rental->obtainChange($rental);
+            $thisAmount = $rental->obtainChange();
 
             $totalAmount += $thisAmount;
 
