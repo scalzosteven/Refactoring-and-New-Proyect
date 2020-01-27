@@ -37,7 +37,7 @@ class Customer
             // add frequent renter points
 
             $frequentRenterPoints = $frequentRenterPoints +
-                $rental->calculateFrequentRenterPoints($rental);
+                $rental->calculateFrequentRenterPoints();
 
 
             //show figures for this rental
