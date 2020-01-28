@@ -1,8 +1,9 @@
 <?php
 
-namespace CatApi\Tests;
+namespace Refactoring\CatApi\Tests;
 
-use CatApi\CatApi;
+
+use Refactoring\CatApi\CatApi;
 
 class CatApiTest extends \PHPUnit_Framework_TestCase
 {

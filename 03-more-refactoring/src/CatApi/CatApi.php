@@ -1,6 +1,6 @@
 <?php
 
-namespace CatApi;
+namespace Refactoring\CatApi;
 
 class CatApi
 {
