@@ -16,35 +16,35 @@ final class Finder
 
     public function find(int $ft): PersonaPair
     {
-        /** @var PersonaPair[] $tr */
-        $tr = [];
+        /** @var PersonaPair[] $personPairList */
+        $personPairList = [];
 
         for ($i = 0; $i < count($this->_personList); $i++) {
             for ($j = $i + 1; $j < count($this->_personList); $j++) {
-                $r = new PersonaPair();
+                $aPersonPair = new PersonaPair();
 
                 if ($this->_personList[$i]->birthDate < $this->_personList[$j]->birthDate) {
-                    $r->person1 = $this->_personList[$i];
-                    $r->person2 = $this->_personList[$j];
+                    $aPersonPair->person1 = $this->_personList[$i];
+                    $aPersonPair->person2 = $this->_personList[$j];
                 } else {
-                    $r->person1 = $this->_personList[$j];
-                    $r->person2 = $this->_personList[$i];
+                    $aPersonPair->person1 = $this->_personList[$j];
+                    $aPersonPair->person2 = $this->_personList[$i];
                 }
 
-                $r->distanceBetweenBirthDay = $r->person2->birthDate->getTimestamp()
-                    - $r->person1->birthDate->getTimestamp();
+                $aPersonPair->distanceBetweenBirthDay = $aPersonPair->person2->birthDate->getTimestamp()
+                    - $aPersonPair->person1->birthDate->getTimestamp();
 
-                $tr[] = $r;
+                $personPairList[] = $aPersonPair;
             }
         }
 
-        if (count($tr) < 1) {
+        if (count($personPairList) < 1) {
             return new PersonaPair();
         }
 
-        $answer = $tr[0];
+        $answer = $personPairList[0];
 
-        foreach ($tr as $result) {
+        foreach ($personPairList as $result) {
             switch ($ft) {
                 case FT::ONE:
                     if ($result->distanceBetweenBirthDay < $answer->distanceBetweenBirthDay) {
