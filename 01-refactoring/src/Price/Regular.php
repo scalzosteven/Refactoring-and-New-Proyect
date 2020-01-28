@@ -15,11 +15,10 @@ class Regular extends Price
 
     public function obtainChange($daysRented)
     {
-        $thisAmount = 0;
-        $thisAmount += 2;
+       $amount = 2;
         if ($daysRented > 2) {
-            $thisAmount += ($daysRented - 2) * 1.5;
+            $amount = $amount + ($daysRented - 2) * 1.5;
         }
-        return $thisAmount;
+        return $amount;
     }
 }
