@@ -31,7 +31,7 @@ final class Finder
                     $r->person2 = $this->_personList[$i];
                 }
 
-                $r->d = $r->person2->birthDate->getTimestamp()
+                $r->distanceBetweenBirthDay = $r->person2->birthDate->getTimestamp()
                     - $r->person1->birthDate->getTimestamp();
 
                 $tr[] = $r;
@@ -47,13 +47,13 @@ final class Finder
         foreach ($tr as $result) {
             switch ($ft) {
                 case FT::ONE:
-                    if ($result->d < $answer->d) {
+                    if ($result->distanceBetweenBirthDay < $answer->distanceBetweenBirthDay) {
                         $answer = $result;
                     }
                     break;
 
                 case FT::TWO:
-                    if ($result->d > $answer->d) {
+                    if ($result->distanceBetweenBirthDay > $answer->distanceBetweenBirthDay) {
                         $answer = $result;
                     }
                     break;
