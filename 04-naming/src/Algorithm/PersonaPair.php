@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace CodelyTV\FinderKata\Algorithm;
 
-final class F
+final class PersonaPair
 {
     /** @var Person */
     public $person1;
