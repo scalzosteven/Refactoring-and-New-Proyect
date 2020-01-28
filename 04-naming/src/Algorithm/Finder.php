@@ -46,13 +46,13 @@ final class Finder
 
         foreach ($personPairList as $result) {
             switch ($aFinderCriteria) {
-                case FinderCriteria::ONE:
+                case FinderCriteria::CLOSE_BIRTHDAY:
                     if ($result->distanceBetweenBirthDay < $answer->distanceBetweenBirthDay) {
                         $answer = $result;
                     }
                     break;
 
-                case FinderCriteria::TWO:
+                case FinderCriteria::FURTHEST_BIRTHDAY:
                     if ($result->distanceBetweenBirthDay > $answer->distanceBetweenBirthDay) {
                         $answer = $result;
                     }
