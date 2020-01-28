@@ -17,4 +17,5 @@ class NewRelease extends Price
     {
         return $daysRented * 3;
     }
+
 }
