@@ -19,8 +19,9 @@ final class Finder
         /** @var PersonaPair[] $personPairList */
         $personPairList = [];
 
-        for ($i = 0; $i < count($this->_personList); $i++) {
-            for ($j = $i + 1; $j < count($this->_personList); $j++) {
+        $numberOfPerson = count($this->_personList);
+        for ($i = 0; $i < $numberOfPerson; $i++) {
+            for ($j = $i + 1; $j < $numberOfPerson; $j++) {
                 $aPersonPair = new PersonaPair();
 
                 if ($this->_personList[$i]->birthDate < $this->_personList[$j]->birthDate) {
@@ -38,7 +39,8 @@ final class Finder
             }
         }
 
-        if (count($personPairList) < 1) {
+        $areEnoughPersonPairs = count($personPairList) < 1;
+        if ($areEnoughPersonPairs) {
             return new PersonaPair();
         }
 
