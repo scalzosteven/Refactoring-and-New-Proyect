@@ -6,6 +6,14 @@ class CatApi
 {
     public function getRandomImage()
     {
+        return $this->getImagen();
+    }
+
+    /**
+     * @return false|string
+     */
+    private function getImagen()
+    {
         if (!file_exists(__DIR__ . '/../../cache/random')
             || time() - filemtime(__DIR__ . '/../../cache/random') > 3) {
             $responseXml = @file_get_contents(
