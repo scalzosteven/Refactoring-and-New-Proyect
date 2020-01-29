@@ -1,8 +1,17 @@
 <?php
 
 namespace Refactoring\Image;
+use Refactoring\Image\Cache;
 class Image
 {
+    /**@var Image */
+    private $_cache;
+
+    public function __construct()
+    {
+        $this->setCache();
+    }
+
     public function getImage()
     {
         $fileDoseNotExist = !file_exists(__DIR__ . '/../../cache/random');
@@ -29,19 +38,14 @@ class Image
 
         $responseElement = new \SimpleXMLElement($responseXml);
 
-        $this->getFilePutContentsInCache($responseElement);
+        $this->_cache->getFilePutContentsInCache($responseElement);
 
         return (string)$responseElement->data->images[0]->image->url;
     }
 
-    /**
-     * @param \SimpleXMLElement $responseElement
-     */
-    private function getFilePutContentsInCache(\SimpleXMLElement $responseElement)
+
+    private function setCache()
     {
-        file_put_contents(
-            __DIR__ . '/../../cache/random',
-            (string)$responseElement->data->images[0]->image->url
-        );
+        $this->_cache = new Cache();
     }
 }
