@@ -3,7 +3,7 @@
 namespace Refactoring\Image;
 class Image
 {
-    public function getImagen()
+    public function getImage()
     {
         if (!file_exists(__DIR__ . '/../../cache/random')
             || time() - filemtime(__DIR__ . '/../../cache/random') > 3) {

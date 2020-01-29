@@ -16,7 +16,7 @@ class CatApi
 
     public function getRandomImage()
     {
-        return $this->_image->getImagen();
+        return $this->_image->getImage();
     }
 
 
