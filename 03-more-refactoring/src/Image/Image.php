@@ -29,7 +29,7 @@ class Image
 
         $responseElement = new \SimpleXMLElement($responseXml);
 
-        $this->getFile_put_contents_in_cache($responseElement);
+        $this->getFilePutContentsInCache($responseElement);
 
         return (string)$responseElement->data->images[0]->image->url;
     }
@@ -37,7 +37,7 @@ class Image
     /**
      * @param \SimpleXMLElement $responseElement
      */
-    private function getFile_put_contents_in_cache(\SimpleXMLElement $responseElement)
+    private function getFilePutContentsInCache(\SimpleXMLElement $responseElement)
     {
         file_put_contents(
             __DIR__ . '/../../cache/random',
