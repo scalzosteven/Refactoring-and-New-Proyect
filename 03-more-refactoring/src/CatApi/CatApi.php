@@ -19,7 +19,6 @@ class CatApi
         return $this->_image->getImage();
     }
 
-
     private function setImage()
     {
         $this->_image = new Image();

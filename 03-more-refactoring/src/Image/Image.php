@@ -5,7 +5,9 @@ class Image
 {
     public function getImage()
     {
-        if (!file_exists(__DIR__ . '/../../cache/random')
+        $fileDoseNotExist = !file_exists(__DIR__ . '/../../cache/random');
+
+        if ($fileDoseNotExist
             || time() - filemtime(__DIR__ . '/../../cache/random') > 3) {
             $responseXml = @file_get_contents(
                 'http://thecatapi.com/api/images/get?format=xml&type=jpg'
