@@ -29,11 +29,19 @@ class Image
 
         $responseElement = new \SimpleXMLElement($responseXml);
 
+        $this->getFile_put_contents_in_cache($responseElement);
+
+        return (string)$responseElement->data->images[0]->image->url;
+    }
+
+    /**
+     * @param \SimpleXMLElement $responseElement
+     */
+    private function getFile_put_contents_in_cache(\SimpleXMLElement $responseElement)
+    {
         file_put_contents(
             __DIR__ . '/../../cache/random',
             (string)$responseElement->data->images[0]->image->url
         );
-
-        return (string)$responseElement->data->images[0]->image->url;
     }
 }
