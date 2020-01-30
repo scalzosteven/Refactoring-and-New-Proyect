@@ -26,7 +26,28 @@ class Customer
         foreach ($travels as $travel){
 
             $thisAmount = 0;
-            
+
+            //determine amounts for each travel
+            switch ($travel->getTravel()->getTransport())
+            {
+                case Travel::CAR:
+                    $thisAmount += $travel->getPeopleToTravel() + 30;
+
+                    break;
+                case Travel::AIRPLANE:
+                    $thisAmount += $travel->getPeopleToTravel() + 100;
+
+                    break;
+                case Travel::TRAIN:
+                    $thisAmount += $travel->getPeopleToTravel() + 50;
+
+                    break;
+                case Travel::BUS:
+                    $thisAmount += $travel->getPeopleToTravel() + 20;
+
+                    break;
+
+            }
         }
 
     }
