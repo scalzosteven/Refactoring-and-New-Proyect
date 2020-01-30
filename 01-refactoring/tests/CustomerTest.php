@@ -1,15 +1,17 @@
 <?php
 
-require_once(dirname(__DIR__).'/Customer.php');
-require_once(dirname(__DIR__).'/Rental.php');
-require_once(dirname(__DIR__).'/Movie.php');
+//require_once(dirname(__DIR__).'/Customer.php');
+//require_once(dirname(__DIR__).'/Rental.php');
+//require_once(dirname(__DIR__).'/Movie.php');
 
+namespace Refactoring;
 
-class CustomerTest extends PHPUnit_Framework_TestCase
+class CustomerTest extends \PHPUnit_Framework_TestCase
 {
     public $customer;
 
-    public function setUp(){
+    public function setUp()
+    {
         $this->customer = new Customer("Joe");
     }
 
@@ -92,6 +94,4 @@ class CustomerTest extends PHPUnit_Framework_TestCase
     {
         $this->customer->addRental(new Rental(new Movie($title, $priceCode), $days));
     }
-
-
 }
