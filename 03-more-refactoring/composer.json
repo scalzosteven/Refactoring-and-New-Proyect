@@ -3,13 +3,13 @@
         "phpunit/phpunit": "~4.1"
     },
     "autoload": {
-        "psr-0": {
-            "": "src/"
+        "psr-4": {
+            "Refactoring\\": "src/"
         }
     },
     "autoload-dev": {
-        "psr-0": {
-            "": "tests/"
+        "psr-4": {
+            "Refactoring\\Test\\": "tests/"
         }
     }
 }
