@@ -1,8 +1,8 @@
 <?php
 
-require_once(dirname(__DIR__).'/src/Customer.php');
-require_once(dirname(__DIR__).'/src/Price.php');
-require_once(dirname(__DIR__).'/src/Travel.php');
+require_once(dirname(__DIR__) . '/src/Travel/Customer.php');
+require_once(dirname(__DIR__) . '/src/Travel/Price.php');
+require_once(dirname(__DIR__) . '/src/Travel/Travel.php');
 
 
 class TravelTest extends PHPUnit_Framework_TestCase

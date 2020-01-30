@@ -1,8 +1,8 @@
 <?php
 
-require_once('src/Customer.php');
-require_once('src/Travel.php');
-require_once('src/Price.php');
+require_once('src/Travel/Customer.php');
+require_once('src/Travel/Travel.php');
+require_once('src/Travel/Price.php');
 
 // define customer
 $customer = new Customer('Steven');
