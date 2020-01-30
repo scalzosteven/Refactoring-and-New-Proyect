@@ -25,7 +25,7 @@ class Customer
         $totalAmount = 0;
         $travels = $this->_travels;
 
-        $result = "Travel by " . $this->getName() . " to ";
+        $result = "Travel by " . $this->getName() . " to\n";
 
         foreach ($travels as $travel){
 
