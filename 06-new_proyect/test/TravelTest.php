@@ -1,6 +1,10 @@
 <?php
 
 require_once(dirname(__DIR__).'/src/Customer.php');
+require_once(dirname(__DIR__).'/src/Price.php');
+require_once(dirname(__DIR__).'/src/Travel.php');
+
+
 class TravelTest extends PHPUnit_Framework_TestCase
 {
     public $customer;
@@ -17,29 +21,22 @@ class TravelTest extends PHPUnit_Framework_TestCase
     public function statment_Travel_Car_Normal_Go_TreePersons (){
 
         //Arrange
-//        $this->addTravel("Paris", TRANSPORT::CAR, OFFER::NORMAL, TYPE::GO, 3);
-        $customer = $this->addTravel("Paris", 30, 1, 1, 3);
+        $this->addTravel("Paris", Travel::CAR,  3);
 
         // Act
-//        $s = $this->customer->statement();
-
+        $s = $this->customer->statement();
 
         // Assert
-        $expected = $customer;
-//        $expected = "Travel by Customer to Paris in car with normal price, normal type and 3 people, total: 90"; 
-        $this->assertEquals($expected, 90);
+        $expected = "Travel by Customer to Paris: 90. Total: 90";
+        $this->assertEquals($expected, $s);
     }
     /**
      * @param $city
      * @param $transport
-     * @param $offer
-     * @param $type
      * @param $persons
      */
-    public function addTravel($city, $transport, $offer, $type, $persons)
+    public function addTravel($city, $transport, $persons)
     {
-//        $this->customer->addTravel($city, $transport, $offer, $type, $persons);
-          return $persons * $type * $transport * $offer;
-
+        $this->customer->addTravel(new Price(new Travel($city, $transport), $persons));
     }
 }
