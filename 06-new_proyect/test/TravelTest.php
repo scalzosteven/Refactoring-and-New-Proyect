@@ -27,7 +27,7 @@ class TravelTest extends PHPUnit_Framework_TestCase
         $s = $this->customer->statement();
 
         // Assert
-        $expected = "Travel by Customer to\nParis: 90. Total: 90";
+        $expected = "Travel by Customer to\n\tParis: 90\n\t-Total: 90\n";
         $this->assertEquals($expected, $s);
     }
     /**

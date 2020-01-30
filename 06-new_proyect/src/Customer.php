@@ -53,9 +53,9 @@ class Customer
 
             }
             $totalAmount += $thisAmount;
-            $result .= $travel->getTravel()->getCity(). ": " . $thisAmount;
+            $result = $result . "\t" . $travel->getTravel()->getCity(). ": " . $thisAmount . "\n";
         }
-        $result .=  ". Total: " . $totalAmount;
+        $result = $result . "\t-Total: " . $totalAmount ."\n";
 
         return $result;
 
