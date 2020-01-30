@@ -1,14 +1,14 @@
 <?php
 
-
+require_once(dirname(__DIR__).'/src/Customer.php');
 class TravelTest extends PHPUnit_Framework_TestCase
 {
     public $customer;
     
-//    public function setUp()
-//    {
-//        $this->customer = new Customer("Customer");
-//    }
+    public function setUp()
+    {
+        $this->customer = new Customer("Customer");
+    }
 
 
     /**
@@ -23,6 +23,7 @@ class TravelTest extends PHPUnit_Framework_TestCase
         // Act
 //        $s = $this->customer->statement();
 
+
         // Assert
         $expected = $customer;
         $this->assertEquals($expected, 90);
@@ -36,7 +37,7 @@ class TravelTest extends PHPUnit_Framework_TestCase
      */
     public function addTravel($city, $transport, $offer, $type, $persons)
     {
-//        $this->customer->addTravel(new Travel($city, $transport, $offer, $type, $persons));
+//        $this->customer->addTravel($city, $transport, $offer, $type, $persons);
           return $persons * $type * $transport * $offer;
 
     }
