@@ -17,4 +17,20 @@ class Customer
         $this->_travels[] = $arg;
     }
 
+    public function statement() {
+        $totalAmount = 0;
+        $travels = $this->_travels;
+
+        $result = "Travel by " . $this->getName();
+
+        foreach ($travels as $travel){
+
+            $thisAmount = 0;
+            
+        }
+
+    }
+
+
+
 }

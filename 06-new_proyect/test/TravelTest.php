@@ -26,6 +26,7 @@ class TravelTest extends PHPUnit_Framework_TestCase
 
         // Assert
         $expected = $customer;
+//        $expected = "Travel by Customer to Paris in car with normal price, normal type and 3 people, total: 90"; 
         $this->assertEquals($expected, 90);
     }
     /**
