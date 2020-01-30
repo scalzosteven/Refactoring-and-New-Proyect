@@ -30,7 +30,7 @@ class Customer
         foreach ($travels as $travel){
 
 
-            $thisAmount = $this->calculateTotalAmount($travel);
+            $thisAmount = $travel->calculateTotalAmount($travel);
 
             $totalAmount += $thisAmount;
             $result = $result . "\t" . $travel->getTravel()->getCity(). ": " . $thisAmount . "\n";
@@ -40,36 +40,5 @@ class Customer
         return $result;
 
     }
-
-    /**
-     * @param $travel
-     * @param $thisAmount
-     * @return float|int
-     */
-    private function calculateTotalAmount($travel)
-    {
-        $thisAmount = 0;
-        switch ($travel->getTravel()->getTransport()) {
-            case Travel::CAR:
-                $thisAmount += $travel->getPeopleToTravel() * 30;
-
-                break;
-            case Travel::AIRPLANE:
-                $thisAmount += $travel->getPeopleToTravel() * 100;
-
-                break;
-            case Travel::TRAIN:
-                $thisAmount += $travel->getPeopleToTravel() * 50;
-
-                break;
-            case Travel::BUS:
-                $thisAmount += $travel->getPeopleToTravel() * 20;
-
-                break;
-
-        }
-        return $thisAmount;
-    }
-
-
+    
 }
