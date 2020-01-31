@@ -3,10 +3,7 @@
 
 class Travel
 {
-    const CAR = 0;
-    const AIRPLANE = 1;
-    const TRAIN = 2;
-    const BUS = 3;
+
     private $_city;
     private $_transport;
     

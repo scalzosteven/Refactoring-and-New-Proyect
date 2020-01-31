@@ -3,6 +3,10 @@
 
 class Price
 {
+    const CAR = 0;
+    const AIRPLANE = 1;
+    const TRAIN = 2;
+    const BUS = 3;
     private $_travel;
     private $_peopleToTravel;
 
@@ -24,19 +28,19 @@ class Price
     {
         $thisAmount = 0;
         switch ($travel->getTravel()->getTransport()) {
-            case Travel::CAR:
+            case self::CAR:
                 $thisAmount += $travel->getPeopleToTravel() * 30;
 
                 break;
-            case Travel::AIRPLANE:
+            case self::AIRPLANE:
                 $thisAmount += $travel->getPeopleToTravel() * 100;
 
                 break;
-            case Travel::TRAIN:
+            case self::TRAIN:
                 $thisAmount += $travel->getPeopleToTravel() * 50;
 
                 break;
-            case Travel::BUS:
+            case self::BUS:
                 $thisAmount += $travel->getPeopleToTravel() * 20;
 
                 break;
