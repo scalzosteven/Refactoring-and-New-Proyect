@@ -1,17 +1,13 @@
 <?php
 
-require_once(dirname(__DIR__) . '/src/Travel/Customer.php');
-require_once(dirname(__DIR__) . '/src/Travel/Price.php');
-require_once(dirname(__DIR__) . '/src/Travel/Travel.php');
-
-
+namespace Refactoring;
 class TravelTest extends PHPUnit_Framework_TestCase
 {
     public $customer;
     
     public function setUp()
     {
-        $this->customer = new Customer("Customer");
+        $this->customer = new CustomerToTravel("Customer");
     }
 
 

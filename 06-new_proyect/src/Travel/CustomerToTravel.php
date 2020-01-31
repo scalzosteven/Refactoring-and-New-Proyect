@@ -1,7 +1,8 @@
 <?php
 
+namespace Refactoring;
 
-class Customer
+class CustomerToTravel
 {
     private $_name;
     private $_travels = array();
@@ -24,14 +25,11 @@ class Customer
     public function statement() {
         $totalAmount = 0;
         $travels = $this->_travels;
-
         $result = "Travel by " . $this->getName() . " to\n";
 
         foreach ($travels as $travel){
 
-
             $thisAmount = $travel->calculateTotalAmount($travel);
-
             $totalAmount += $thisAmount;
             $result = $result . "\t" . $travel->getTravel()->getCity(). ": " . $thisAmount . "\n";
         }
@@ -40,5 +38,5 @@ class Customer
         return $result;
 
     }
-    
+
 }
