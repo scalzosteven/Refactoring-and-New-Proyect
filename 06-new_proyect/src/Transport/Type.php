@@ -7,5 +7,5 @@ abstract class Type
 {
     public abstract function getTypeTransport();
 
-    public abstract function obtainChanges($peopleToTravel);
+    public abstract function obtainPrice($peopleToTravel);
 }
