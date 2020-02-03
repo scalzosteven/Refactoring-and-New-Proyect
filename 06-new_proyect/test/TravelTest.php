@@ -1,7 +1,7 @@
 <?php
 
 namespace Refactoring;
-class TravelTest extends PHPUnit_Framework_TestCase
+class TravelTest extends \PHPUnit_Framework_TestCase
 {
     public $customer;
     
@@ -17,7 +17,7 @@ class TravelTest extends PHPUnit_Framework_TestCase
     public function statment_Travel_Car_Normal_Go_TreePersons (){
 
         //Arrange
-        $this->addTravel("Paris", Travel::CAR,  3);
+        $this->addTravel("Paris", Price::CAR,  3);
 
         // Act
         $s = $this->customer->statement();
