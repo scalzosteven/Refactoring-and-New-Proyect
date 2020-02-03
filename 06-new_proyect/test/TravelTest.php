@@ -7,7 +7,7 @@ class TravelTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->customer = new CustomerToTravel("Steven");
+        $this->customer = new CustomerToTravel("Jose");
     }
     /**
      * @test
