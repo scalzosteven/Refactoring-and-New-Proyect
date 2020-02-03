@@ -40,7 +40,7 @@ class TravelTest extends \PHPUnit_Framework_TestCase
         $s = $this->customer->getPrice($travel);
 
         // Assert
-        $expected = "400";
+        $expected = "250";
         $this->assertEquals($expected, $s);
     }
 
