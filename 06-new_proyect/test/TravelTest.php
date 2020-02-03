@@ -79,7 +79,6 @@ class TravelTest extends \PHPUnit_Framework_TestCase
      * @param $persons
      */
 
-
     public function setUp()
     {
         $this->customer = new CustomerToTravel("Jose");
