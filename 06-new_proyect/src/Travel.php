@@ -17,7 +17,6 @@ class Travel
         return $this->_peopleToTravel;
     }
 
-
     public function obtainPrice()
     {
         return $this->getTravel()->obtainPrice($this->getPeopleToTravel());

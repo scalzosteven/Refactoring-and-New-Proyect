@@ -23,7 +23,6 @@ class CustomerToTravel
     }
 
     public function statement() {
-        $totalAmount = 0;
         $travels = $this->_travels;
         $result = "Travel by " . $this->getName() . " to\n";
 
@@ -37,7 +36,7 @@ class CustomerToTravel
 
     }
 
-    private function getPrice($travels){
+    public function getPrice($travels){
         $totalAmount = 0;
         foreach ($travels as $travel) {
             $totalAmount += $travel->obtainPrice();
