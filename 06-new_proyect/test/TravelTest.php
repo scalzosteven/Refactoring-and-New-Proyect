@@ -4,10 +4,22 @@ namespace Refactoring;
 class TravelTest extends \PHPUnit_Framework_TestCase
 {
     public $customer;
-    
+
     public function setUp()
     {
-        $this->customer = new CustomerToTravel("Customer");
+        $this->customer = new CustomerToTravel("Steven");
+    }
+    /**
+     * @test
+     */
+    public function set_name_jose_and_return_jose (){
+
+        // Act
+        $s = $this->customer->getName();
+
+        // Assert
+        $expected = "Jose";
+        $this->assertEquals($expected, $s);
     }
 
 
@@ -23,7 +35,7 @@ class TravelTest extends \PHPUnit_Framework_TestCase
         $s = $this->customer->statement();
 
         // Assert
-        $expected = "Travel by Customer to\n\tParis: 90\n\t-Total: 90\n";
+        $expected = "Travel by Jose to\n\tParis: 90\n\t-Total: 90\n";
         $this->assertEquals($expected, $s);
     }
     /**
