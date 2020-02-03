@@ -47,6 +47,20 @@ class TravelTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function get_price_2_person_by_bus (){
+
+        $travel[] = new Travel(new Price("Roma", Price::BUS), 2);
+        // Act
+        $s = $this->customer->getPrice($travel);
+
+        // Assert
+        $expected = "250";
+        $this->assertEquals($expected, $s);
+    }
+
+    /**
+     * @test
+     */
     public function statment_Travel_Car_Normal_Go_TreePersons (){
 
         //Arrange
