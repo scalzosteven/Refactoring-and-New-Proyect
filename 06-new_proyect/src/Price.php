@@ -2,51 +2,59 @@
 
 namespace Refactoring;
 
+use Refactoring\Transport\AirPlane;
+use Refactoring\Transport\Bus;
+use Refactoring\Transport\Car;
+use Refactoring\Transport\Train;
+
 class Price
 {
     const CAR = 0;
     const AIRPLANE = 1;
     const TRAIN = 2;
     const BUS = 3;
-    private $_travel;
-    private $_peopleToTravel;
+    private $_city;
+    private $_price;
 
-    function __construct($travel, $peopleToTravel)
+
+    function __construct($city, $typeTransport)
     {
-        $this->_travel = $travel;
-        $this->_peopleToTravel = $peopleToTravel;
+        $this->_city = $city;
+        $this->setPrice($typeTransport);
     }
 
-    public function getPeopleToTravel(){
-        return $this->_peopleToTravel;
+    public function getTypeTransport(){
+        return$this->_price->getTypeTransport();
     }
 
-    public function getTravel(){
-        return $this->_travel;
-    }
-
-    public function calculateTotalAmount($travel)
+    public function getCity()
     {
-        $thisAmount = 0;
-        switch ($travel->getTravel()->getTransport()) {
+        return $this->_city;
+    }
+    public function obtainPrice($peopleToTravel){
+        return $this->_price->obtainPrice($peopleToTravel);
+    }
+
+    public function setPrice($typeTransport)
+    {
+        switch ($typeTransport) {
             case self::CAR:
-                $thisAmount += $travel->getPeopleToTravel() * 30;
+                $this->_price = new Car();
 
                 break;
             case self::AIRPLANE:
-                $thisAmount += $travel->getPeopleToTravel() * 100;
+                $this->_price = new AirPlane();
 
                 break;
             case self::TRAIN:
-                $thisAmount += $travel->getPeopleToTravel() * 50;
+                $this->_price = new Train();
 
                 break;
             case self::BUS:
-                $thisAmount += $travel->getPeopleToTravel() * 20;
+                $this->_price = new Bus();
 
                 break;
 
         }
-        return $thisAmount;
     }
 }

@@ -33,6 +33,6 @@ class TravelTest extends \PHPUnit_Framework_TestCase
      */
     public function addTravel($city, $transport, $persons)
     {
-        $this->customer->addTravel(new Price(new Travel($city, $transport), $persons));
+        $this->customer->addTravel(new Travel(new Price($city, $transport), $persons));
     }
 }

@@ -17,7 +17,7 @@ class CustomerToTravel
         return $this->_name;
     }
 
-    public function addTravel(Price $arg)
+    public function addTravel(Travel $arg)
     {
         $this->_travels[] = $arg;
     }
@@ -29,14 +29,20 @@ class CustomerToTravel
 
         foreach ($travels as $travel){
 
-            $thisAmount = $travel->calculateTotalAmount($travel);
-            $totalAmount += $thisAmount;
-            $result = $result . "\t" . $travel->getTravel()->getCity(). ": " . $thisAmount . "\n";
+            $result = $result . "\t" . $travel->getTravel()->getCity(). ": " . $travel->obtainPrice() . "\n";
         }
-        $result = $result . "\t-Total: " . $totalAmount ."\n";
+        $result = $result . "\t-Total: " . $this->getPrice($this->_travels) ."\n";
 
         return $result;
 
+    }
+
+    private function getPrice($travels){
+        $totalAmount = 0;
+        foreach ($travels as $travel) {
+            $totalAmount += $travel->obtainPrice();
+        }
+        return $totalAmount;
     }
 
 }

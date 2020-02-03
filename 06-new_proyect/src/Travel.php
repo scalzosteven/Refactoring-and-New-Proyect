@@ -3,26 +3,27 @@
 namespace Refactoring;
 class Travel
 {
-
-    private $_city;
-    private $_transport;
+    private $_travel;
+    private $_peopleToTravel;
     
-    function __construct($city, $transport)
+    function __construct($travel, $peopleToTravel)
     {
-        $this->_city = $city;
-        $this->_transport = $transport;
-    }
-    
-    public function getTransport(){
-        return $this->_transport;
-    }
-    
-    public function setTransport($arg){
-        $this->_transport = $arg;
-    }
-    
-    public function getCity(){
-        return $this->_city;
+        $this->_travel = $travel;
+        $this->_peopleToTravel = $peopleToTravel;
     }
 
+    public function getPeopleToTravel()
+    {
+        return $this->_peopleToTravel;
+    }
+
+
+    public function obtainPrice()
+    {
+        return $this->getTravel()->obtainPrice($this->getPeopleToTravel());
+    }
+
+    public function getTravel(){
+        return $this->_travel;
+    }
 }
