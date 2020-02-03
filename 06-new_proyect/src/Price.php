@@ -23,9 +23,9 @@ class Price
         $this->setPrice($typeTransport);
     }
 
-    public function getTypeTransport(){
-        return$this->_price->getTypeTransport();
-    }
+//    public function getTypeTransport(){
+//        return$this->_price->getTypeTransport();
+//    }
 
     public function getCity()
     {
