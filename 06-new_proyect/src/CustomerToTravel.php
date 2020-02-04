@@ -5,7 +5,7 @@ namespace Refactoring;
 class CustomerToTravel
 {
     private $_name;
-    private $_travels = array();
+    public $_travels = array();
 
     function __construct($name)
     {

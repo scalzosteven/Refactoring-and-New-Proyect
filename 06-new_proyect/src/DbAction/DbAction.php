@@ -1,6 +1,6 @@
 <?php
 namespace Refactoring\Travels;
-class addTravelesToDb extends \Refactoring\core\DBAbstractModel
+class DbAction extends \Refactoring\core\DBAbstractModel
 {
 
     public function get($travel_city = '')

@@ -1,23 +1,28 @@
 <?php
+namespace Refactoring;
 require 'vendor/autoload.php';
 
-// define customer
-$customer = new Refactoring\CustomerToTravel('Steven');
-$city = 'Paris';
-// choose movie to be rented, define rental, add it to the customer
-$price = new Refactoring\Price($city, 2);
-$travel = new Refactoring\Travel($price, 3);
-$customer->addTravel($travel);
-$db = new Refactoring\Travels\addTravelesToDb($price, $city);
-$db->set($customer->getPrice($travel), $city);
 
-// choose 2nd movie to be rented, define rental, add it to the customer
-$city = 'Roma';
-$price = new Refactoring\Price($city, 1);
-$travel = new Refactoring\Travel($price, 2);
+// define customer
+$customer = new CustomerToTravel('Steven');
+$city = 'Paris';
+$price = new Price($city, 3);
+$travel = new Travel($price, 3);
+
+//$travel = new Travel(new Price($city, 2), 2);
 $customer->addTravel($travel);
-$db = new Refactoring\Travels\addTravelesToDb($price, $city);
-$db->set($customer->getPrice($travel), $city);
+$s = $customer->getPrice($customer->_travels);
+
+echo $s;
+$db = new Travels\addTravelesToDb($price, $city);
+$db->set($customer->getPrice($customer->_travels), $city);
+
+$city = 'Roma';
+$price = new Price($city, 1);
+$travel = new Travel($price, 2);
+$customer->addTravel($travel);
+$db = new Travels\addTravelesToDb($price, $city);
+$db->set($customer->getPrice($customer->_travels), $city);
 
 
 // print the statement
