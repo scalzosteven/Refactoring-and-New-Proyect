@@ -3,17 +3,15 @@ namespace Refactoring\DbAction;
 class DbAction extends \Refactoring\core\DBAbstractModel
 {
 
-    public function get($travel_city = '')
+    public function get($name)
     {
+         $this->query = "
+              SELECT *
+              FROM customers
+              WHERE name = '$name' 
+         ";
+         $this->get_results_from_query();
 
-        if ($travel_city != ''):
-            $this->query = "
-                    SELECT *
-                    FROM viajes
-                    WHERE city = '$travel_city' 
-                ";
-            $this->get_results_from_query();
-        endif;
 
         if (count($this->rows) == 1) {
             foreach ($this->rows[0] as $propiedad => $valor):
@@ -28,21 +26,16 @@ class DbAction extends \Refactoring\core\DBAbstractModel
 
 
 
-    public function set($price, $city){
+    public function set($name, $price, $city){
 
-             $this->query = "
-            INSERT INTO viajes
-               (city, price)
-            VALUES
-                ('$city', '$price')
-            ";
-//          $this->query = "
-//               INSERT INTO customers
-//               VALUES $name
-//          ";
+        $this->get($name);
+        if($name != $this->name) {
+            $this->setCustomer($name);
+            $this->setViaje($price, $city, $this->lastId);
+        } else {
+            $this->setViaje($price, $city, $this->id);
 
-            $this->execute_single_query();
-            $this->mensaje = 'Ventana agregada exitosamente';
+        }
 
 
     }
@@ -74,6 +67,38 @@ class DbAction extends \Refactoring\core\DBAbstractModel
 
     function __destruct() {
         // unset($this);
+    }
+
+    /**
+     * @param $price
+     * @param $city
+     */
+    private function setViaje($price, $city, $lastId): void
+    {
+        $this->query = "
+            INSERT INTO viajes
+               (city, price, id_customer)
+            VALUES
+                ('$city', $price, $lastId)
+            ";
+        $this->execute_single_query();
+        $this->mensaje = 'Ventana agregada exitosamente ';
+
+    }
+
+    /**
+     * @param $name
+     */
+    private function setCustomer($name): void
+    {
+        $this->query = "
+               INSERT INTO customers
+               (name)
+               VALUES ('$name')
+          ";
+        $this->execute_single_query();
+        $this->mensaje = 'Ventana agregada exitosamente ';
+
     }
 
 }

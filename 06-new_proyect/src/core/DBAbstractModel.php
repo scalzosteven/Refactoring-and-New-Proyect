@@ -12,18 +12,16 @@ abstract  class DBAbstractModel {
     protected $rows = array();
     private $conn;
     public $mensaje = 'Hecho';
+    protected $lastId;
 
-    abstract protected function get();
-    abstract protected function set($price, $city);
+    abstract protected function get($name);
+    abstract protected function set($name, $price, $city);
     abstract protected function edit();
     abstract protected function delete();
 
     private function open_connection() {
         $this->conn = new mysqli(self::$db_host, self::$db_user,
             self::$db_pass, $this->db_name);
-        if($this->conn){
-            print_r("Coneccion extrablecidad");
-        }
     }
 
     private function close_connection() {
@@ -34,10 +32,10 @@ abstract  class DBAbstractModel {
         if(true){
             $this->open_connection();
             if ($this->conn->query($this->query)) {
-                echo 'true';
+                $this->lastId = $this->conn->insert_id;
             } else {
-                echo 'false';
                 echo $this->conn->error;
+                unset($this->lastId);
             }
 
             $this->close_connection();
