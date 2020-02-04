@@ -14,14 +14,14 @@ $customer->addTravel($travel);
 $s = $customer->getPrice($customer->_travels);
 
 echo $s;
-$db = new Travels\addTravelesToDb($price, $city);
+$db = new DbAction\DbAction($price, $city);
 $db->set($customer->getPrice($customer->_travels), $city);
 
 $city = 'Roma';
 $price = new Price($city, 1);
 $travel = new Travel($price, 2);
 $customer->addTravel($travel);
-$db = new Travels\addTravelesToDb($price, $city);
+$db = new DbAction\DbAction($price, $city);
 $db->set($customer->getPrice($customer->_travels), $city);
 
 

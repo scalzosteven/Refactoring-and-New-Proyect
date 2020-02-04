@@ -1,5 +1,5 @@
 <?php
-namespace Refactoring\Travels;
+namespace Refactoring\DbAction;
 class DbAction extends \Refactoring\core\DBAbstractModel
 {
 
