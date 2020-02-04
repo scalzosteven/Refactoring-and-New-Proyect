@@ -1,13 +1,7 @@
 <?php
 namespace Refactoring\Travels;
-
-class Travels extends DBAbstractModel
+class addTravelesToDb extends \Refactoring\core\DBAbstractModel
 {
-
-    public $city;
-    public $price;
-    public $id_costumer;
-
 
     public function get($travel_city = '')
     {
@@ -32,27 +26,25 @@ class Travels extends DBAbstractModel
 
     }
 
-    public function set($travel_data=array()){
 
-        if(array_key_exists('city', $travel_data)):
-            $this->get($travel_data['city']);
-            if($travel_data['city'] != $this->city) {
-                foreach ($travel_data as $campo => $valor):
-                    $$campo = $valor;
-                endforeach;
+
+    public function set($price, $city){
+
                 $this->query = "
                     INSERT INTO viajes
                     (city, price)
                     VALUES
-                    ('$city, '$price')
+                    ('$city', '$price')
                 ";
+//                $this->query = "
+//                    INSERT INTO customers
+//                    VALUES $name
+//                ";
 
                 $this->execute_single_query();
                 $this->mensaje = 'Ventana agregada exitosamente';
-            }else{
-                $this->mensaje = 'No se ha agregado la ventana';
-            }
-        endif;
+
+
     }
 
     public function edit($ventanas_data=array() ){
@@ -86,7 +78,7 @@ class Travels extends DBAbstractModel
     }
 
     function __destruct() {
-       // unset($this);
+        // unset($this);
     }
 
 }
