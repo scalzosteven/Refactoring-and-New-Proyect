@@ -30,19 +30,19 @@ class addTravelesToDb extends \Refactoring\core\DBAbstractModel
 
     public function set($price, $city){
 
-                $this->query = "
-                    INSERT INTO viajes
-                    (city, price)
-                    VALUES
-                    ('$city', '$price')
-                ";
-//                $this->query = "
-//                    INSERT INTO customers
-//                    VALUES $name
-//                ";
+             $this->query = "
+            INSERT INTO viajes
+               (city, price)
+            VALUES
+                ('$city', '$price')
+            ";
+//          $this->query = "
+//               INSERT INTO customers
+//               VALUES $name
+//          ";
 
-                $this->execute_single_query();
-                $this->mensaje = 'Ventana agregada exitosamente';
+            $this->execute_single_query();
+            $this->mensaje = 'Ventana agregada exitosamente';
 
 
     }
@@ -70,11 +70,6 @@ class addTravelesToDb extends \Refactoring\core\DBAbstractModel
      ";
         $this->execute_single_query();
         $this->mensaje = 'Ventana eliminada';
-    }
-
-    function __construct()
-    {
-        $this->db_name = 'paredes_construir';
     }
 
     function __destruct() {

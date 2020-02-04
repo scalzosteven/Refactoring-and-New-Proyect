@@ -1,5 +1,7 @@
 <?php
 namespace Refactoring\core;
+use mysqli;
+
 abstract  class DBAbstractModel {
 
     private static $db_host = "db";
@@ -29,9 +31,15 @@ abstract  class DBAbstractModel {
     }
 
     protected function execute_single_query() {
-        if($_POST){
+        if(true){
             $this->open_connection();
-            $this->conn->query($this->query);
+            if ($this->conn->query($this->query)) {
+                echo 'true';
+            } else {
+                echo 'false';
+                echo $this->conn->error;
+            }
+
             $this->close_connection();
         } else {
             $this->mensaje = 'Metodo no permitido';
