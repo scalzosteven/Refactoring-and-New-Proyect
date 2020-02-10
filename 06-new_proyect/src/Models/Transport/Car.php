@@ -1,6 +1,6 @@
 <?php
 
-namespace Refactoring\Transport;
+namespace Refactoring\Models\Transport;
 
 use Refactoring\Price;
 

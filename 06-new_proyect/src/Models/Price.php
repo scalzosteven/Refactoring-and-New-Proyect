@@ -1,11 +1,12 @@
 <?php
 
-namespace Refactoring;
+namespace Refactoring\Models;
 
-use Refactoring\Transport\AirPlane;
-use Refactoring\Transport\Bus;
-use Refactoring\Transport\Car;
-use Refactoring\Transport\Train;
+use Refactoring\Models\Transport\AirPlane;
+use Refactoring\Models\Transport\Bus;
+use Refactoring\Models\Transport\Car;
+use Refactoring\Models\Transport\Train;
+
 
 class Price
 {
@@ -27,6 +28,7 @@ class Price
     {
         return $this->_city;
     }
+
     public function obtainPrice($peopleToTravel){
         return $this->_price->obtainPrice($peopleToTravel);
     }

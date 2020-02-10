@@ -1,5 +1,10 @@
 <?php
 namespace Refactoring;
+
+use Refactoring\Models\CustomerToTravel;
+use Refactoring\Models\Price;
+use Refactoring\Models\Travel;
+
 class TravelTest extends \PHPUnit_Framework_TestCase
 {
     public $customer;

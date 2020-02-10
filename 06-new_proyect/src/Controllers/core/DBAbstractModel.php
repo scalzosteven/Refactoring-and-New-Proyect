@@ -1,5 +1,5 @@
 <?php
-namespace Refactoring\core;
+namespace Refactoring\Controllers\core;
 use mysqli;
 
 abstract  class DBAbstractModel {

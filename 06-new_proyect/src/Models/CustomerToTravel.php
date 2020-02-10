@@ -1,6 +1,6 @@
 <?php
 
-namespace Refactoring;
+namespace Refactoring\Models;
 
 class CustomerToTravel
 {

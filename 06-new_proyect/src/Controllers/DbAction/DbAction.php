@@ -1,6 +1,6 @@
 <?php
-namespace Refactoring\DbAction;
-class DbAction extends \Refactoring\core\DBAbstractModel
+namespace Refactoring\Controllers\DbAction;
+class DbAction extends \Refactoring\Controllers\core\DBAbstractModel
 {
 
     public function get($name)
