@@ -20,3 +20,7 @@ Detenernos un momento a pensar los nombres de las variables es fundamental y lo 
 
 ## 05 Old school
 Proyecto legacy donde podemos prácticar nuestras habilidades, sobre todo el autoload
+
+## 06 new proyect 
+Proyecto que almacena usuarios y sus viajes
+Ultima actualizacion en rama develop
