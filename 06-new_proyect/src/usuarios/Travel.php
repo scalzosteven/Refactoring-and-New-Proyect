@@ -1,6 +1,6 @@
 <?php
 
-namespace Refactoring\Models;
+namespace Refactoring\usuarios;
 class Travel
 {
     private $_travel;

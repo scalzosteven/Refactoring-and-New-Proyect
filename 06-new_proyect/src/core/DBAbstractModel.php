@@ -1,5 +1,5 @@
 <?php
-namespace Refactoring\Controllers\core;
+namespace Refactoring\core;
 use mysqli;
 
 abstract  class DBAbstractModel {
@@ -14,10 +14,10 @@ abstract  class DBAbstractModel {
     public $mensaje = 'Hecho';
     protected $lastId;
 
-    abstract protected function get($name);
-    abstract protected function set($name, $price, $city);
-    abstract protected function edit();
-    abstract protected function delete();
+    abstract public function get($name);
+    abstract public function set();
+    abstract public function edit();
+    abstract public function delete($name);
 
     private function open_connection() {
         $this->conn = new mysqli(self::$db_host, self::$db_user,

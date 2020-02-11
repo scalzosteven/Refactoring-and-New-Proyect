@@ -1,6 +1,6 @@
 <?php
 
-namespace Refactoring\Models\Transport;
+namespace Refactoring\usuarios\Transport;
 
 use Refactoring\Price;
 class AirPlane extends Type

@@ -1,11 +1,11 @@
 <?php
 
-namespace Refactoring\Models;
+namespace Refactoring\usuarios;
 
-use Refactoring\Models\Transport\AirPlane;
-use Refactoring\Models\Transport\Bus;
-use Refactoring\Models\Transport\Car;
-use Refactoring\Models\Transport\Train;
+use Refactoring\usuarios\Transport\AirPlane;
+use Refactoring\usuarios\Transport\Bus;
+use Refactoring\usuarios\Transport\Car;
+use Refactoring\usuarios\Transport\Train;
 
 
 class Price

@@ -1,21 +1,27 @@
 <?php
-namespace Refactoring\Controllers\DbAction;
-class DbAction extends \Refactoring\Controllers\core\DBAbstractModel
+namespace Refactoring\usuarios;
+class DbAction extends \Refactoring\core\DBAbstractModel
 {
 
     public function get($name)
     {
-         $this->query = "
-              SELECT *
-              FROM customers
-              WHERE name = '$name' 
-         ";
-         $this->get_results_from_query();
-
+        $this->getUser($name);
 
         if (count($this->rows) == 1) {
             foreach ($this->rows[0] as $propiedad => $valor):
                 $this->$propiedad = $valor;
+//                $this->getTravel($id);
+//                if (count($this->rows) > 0) {
+//                    for($i = 0; $i < count($this->rows) ; $i++){
+//                        foreach ($this->rows[$i] as $propiedad => $valor):
+//                            $this->$propiedad = $valor;
+//                        endforeach;
+//                    }
+//                    $this->mensaje = 'Ventana encontrada';
+//                } else {
+//                    $this->mensaje = 'Venatana no encontrada';
+//                }
+
             endforeach;
             $this->mensaje = 'Ventana encontrada';
         } else {
@@ -26,7 +32,11 @@ class DbAction extends \Refactoring\Controllers\core\DBAbstractModel
 
 
 
-    public function set($name, $price, $city){
+    public function set($user_data=array() ){
+
+        foreach ($user_data as $campo=>$valor):
+            $$campo = $valor;
+        endforeach;
 
         $this->get($name);
         if($name != $this->name) {
@@ -57,12 +67,14 @@ class DbAction extends \Refactoring\Controllers\core\DBAbstractModel
     }
 
     public function delete($travel_city='') {
-        $this->query = "
-             DELETE FROM viajes
-             WHERE city = '$travel_city'
-     ";
-        $this->execute_single_query();
-        $this->mensaje = 'Ventana eliminada';
+//        print_r('Eliminar: '. $travel_city);
+//
+//        $this->query = "
+//             DELETE FROM viajes
+//             WHERE city = '$travel_city'
+//     ";
+//        $this->execute_single_query();
+//        $this->mensaje = 'Ventana eliminada';
     }
 
     function __destruct() {
@@ -101,4 +113,29 @@ class DbAction extends \Refactoring\Controllers\core\DBAbstractModel
 
     }
 
+    /**
+     * @param $name
+     */
+    private function getUser($name): void
+    {
+        $this->query = "
+              SELECT *
+              FROM customers
+              WHERE name = '$name' 
+         ";
+        $this->get_results_from_query();
+    }
+
+    /**
+     * @param $name
+     */
+    private function getTravel($id_customer): void
+    {
+        $this->query = "
+              SELECT *
+              FROM viajes
+              WHERE id_customer = '$id_customer' 
+         ";
+        $this->get_results_from_query();
+    }
 }

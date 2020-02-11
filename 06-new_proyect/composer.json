@@ -5,7 +5,9 @@
         "friendsofphp/php-cs-fixer": "^2.16"
     },
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+      "ext-mysqli": "*"
+    },
     "autoload": {
         "psr-4": {
             "Refactoring\\": "src/"
