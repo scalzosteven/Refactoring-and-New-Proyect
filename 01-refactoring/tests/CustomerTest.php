@@ -12,7 +12,7 @@ class CustomerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->customer = new Customer("Joe");
+        $this->customer = new CustomerToTravel("Joe");
     }
 
     /**
