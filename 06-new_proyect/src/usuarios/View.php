@@ -25,7 +25,7 @@ class View {
         );
     }
     public function get_template($form='get') {
-        $file = 'site_media/html/usuario_'.$form.'.html';
+        $file = 'site_media/html/usuario/usuario_'.$form.'.html';
         $template = file_get_contents($file);
         return $template;
     }
@@ -61,6 +61,35 @@ class View {
         print $html;
     }
 
+    public function retornar_vista_travel($vista, $data=array()) {
+        $diccionario = $this->getDiccionario();
+        $html = $this->get_template_travel('template');
+        $html = str_replace('{travels}', $this->get_template_travel($vista), $html);
+        $html = $this->render_dinamic_data($html, $diccionario['form_actions']);
+        $html = $this->render_dinamic_data($html, $diccionario['links_menu']);
+        $html = $this->render_dinamic_data($html, $data);
+        // render {mensaje}
+        if(array_key_exists('nombre', $data)
+            &&
+            //  array_key_exists('apellido', $data)&&
+            $vista==Constants::VIEW_EDIT_USER) {
+            $mensaje = 'Editar usuario '.$data['nombre'] ;
+        } else {
+            if(array_key_exists('mensaje', $data)) {
+                $mensaje = $data['mensaje'];
+            } else {
+                $mensaje = 'Datos del viaje:';
+            }
+        }
+        $html = str_replace('{mensaje}', $mensaje, $html);
+        print $html;
+    }
+
+    public function get_template_travel($form='get') {
+        $file = 'site_media/html/Travels/travel_'.$form.'.html';
+        $template = file_get_contents($file);
+        return $template;
+    }
 }
 
 ?>

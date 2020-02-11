@@ -29,7 +29,8 @@ class Controller
             Constants::VIEW_SET_USER,
             Constants::VIEW_GET_USER,
             Constants::VIEW_DELETE_USER,
-            Constants::VIEW_EDIT_USER
+            Constants::VIEW_EDIT_USER,
+            Constants::VIEW_EDIT_TRAVEL
         );
         foreach ($peticiones as $peticion) {
             $uri_peticion = Constants::MODULO . $peticion . '/';
@@ -49,9 +50,21 @@ class Controller
                 $usuario->get($user_data['name']);
                 $data = array(
                     'name' => $usuario->name,
-                    'id' => $usuario->id
+                    'id' => $usuario->id,
+                    'contador' => $usuario->contador
                 );
+
                 $this->view->retornar_vista(Constants::VIEW_EDIT_USER, $data);
+
+                for($i = 1; $i < $data['contador']; $i++){
+                    $usuario->getTravel($data['id'], $i);
+                    $travel = array(
+                        'city' => $usuario->city,
+                        'price' => $usuario->price
+                    );
+                    $this->view->retornar_vista_travel(Constants::VIEW_EDIT_TRAVEL, $travel);
+                }
+
                 break;
             case Constants::DELETE_USER:
                 $usuario->delete($user_data['name']);
